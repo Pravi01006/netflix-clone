@@ -1,8 +1,14 @@
-export default function Navbar({ query, onSearch }) {
+export default function Navbar({ query, onSearch, onSurprise }) {
   return (
     <nav className="fixed top-0 w-full z-10 flex items-center justify-between px-8 py-4 bg-gradient-to-b from-black to-transparent">
       <h1 className="text-red-600 text-3xl font-bold">NETFLIX</h1>
       <div className="flex items-center gap-4">
+        <button
+          onClick={onSurprise}
+          className="bg-gray-700 text-white px-4 py-1 rounded hover:bg-gray-600"
+        >
+          Surprise me
+        </button>
         <input
           type="text"
           value={query}

@@ -12,6 +12,7 @@ export async function getTopRated() {
   const data = await response.json()
   return data.results
 }
+
 export async function getTrailerKey(movieId) {
   const response = await fetch(`${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}`)
   const data = await response.json()
@@ -20,9 +21,18 @@ export async function getTrailerKey(movieId) {
   )
   return trailer ? trailer.key : null
 }
+
 export async function searchMovies(query) {
   const response = await fetch(
     `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`
+  )
+  const data = await response.json()
+  return data.results
+}
+
+export async function getMoviesByGenre(genreIds) {
+  const response = await fetch(
+    `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${encodeURIComponent(genreIds)}&sort_by=popularity.desc`
   )
   const data = await response.json()
   return data.results
